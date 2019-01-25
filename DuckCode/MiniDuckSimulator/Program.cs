@@ -10,6 +10,11 @@ namespace Client
             mallard.Fly();
             mallard.Quack();
             Console.ReadLine();
+
+            Duck model = new ModelDuck();
+            model.Fly();
+            (model as ModelDuck).FlyBehavior = new FlyRocketPowered();
+            model.Fly();
         }
     }
 }

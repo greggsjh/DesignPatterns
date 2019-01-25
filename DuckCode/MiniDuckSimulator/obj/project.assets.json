@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jamisongreggs/dev/DesignPatterns/DuckCode/Client/Client.csproj",
-      "projectName": "Client",
-      "projectPath": "/Users/jamisongreggs/dev/DesignPatterns/DuckCode/Client/Client.csproj",
+      "projectUniqueName": "/Users/jamisongreggs/dev/DesignPatterns/DuckCode/MiniDuckSimulator/MiniDuckSimulator.csproj",
+      "projectName": "MiniDuckSimulator",
+      "projectPath": "/Users/jamisongreggs/dev/DesignPatterns/DuckCode/MiniDuckSimulator/MiniDuckSimulator.csproj",
       "packagesPath": "/Users/jamisongreggs/.nuget/packages/",
-      "outputPath": "/Users/jamisongreggs/dev/DesignPatterns/DuckCode/Client/obj/",
+      "outputPath": "/Users/jamisongreggs/dev/DesignPatterns/DuckCode/MiniDuckSimulator/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

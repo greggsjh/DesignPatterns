@@ -1,9 +1,12 @@
 using System;
 
-public class FlyNoWay : IFlyBehavior
+namespace MiniDuckSimulator
 {
-    public void Fly()
+    public class FlyNoWay : IFlyBehavior
     {
-        Console.WriteLine("I can't fly...");
+        public void Fly()
+        {
+            Console.WriteLine("I can't fly...");
+        }
     }
 }

@@ -1,20 +1,20 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v2.2",
-    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v2.2": {
-      "Client/1.0.0": {
+    ".NETCoreApp,Version=v3.1": {
+      "MiniDuckSimulator/1.0.0": {
         "runtime": {
-          "Client.dll": {}
+          "MiniDuckSimulator.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Client/1.0.0": {
+    "MiniDuckSimulator/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

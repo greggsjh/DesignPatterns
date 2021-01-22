@@ -1,26 +1,29 @@
 using System;
 
-public class ModelDuck : Duck
+namespace MiniDuckSimulator
 {
-    public IFlyBehavior FlyBehavior 
-    { 
-        get { return flyBehavior; } 
-        set { flyBehavior = value; } 
-    }
-    public IQuackBehavior QuackBehavior 
-    { 
-        get { return quackBehavior; } 
-        set { quackBehavior = value; } 
-    }
-
-    public ModelDuck()
+    public class ModelDuck : Duck
     {
-        FlyBehavior = new FlyNoWay();
-        QuackBehavior = new PlainQuack();
-    }
+        public IFlyBehavior FlyBehavior
+        {
+            get { return flyBehavior; }
+            set { flyBehavior = value; }
+        }
+        public IQuackBehavior QuackBehavior
+        {
+            get { return quackBehavior; }
+            set { quackBehavior = value; }
+        }
 
-    public override void Display()
-    {
-        Console.WriteLine("I'm a model duck.");
+        public ModelDuck()
+        {
+            FlyBehavior = new FlyNoWay();
+            QuackBehavior = new PlainQuack();
+        }
+
+        public override void Display()
+        {
+            Console.WriteLine("I'm a model duck.");
+        }
     }
 }

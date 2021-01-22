@@ -1,23 +1,26 @@
-
 using System;
 
-public abstract class Duck
+namespace MiniDuckSimulator
 {
-    public IFlyBehavior flyBehavior;
-    public IQuackBehavior quackBehavior;
-    public abstract void Display();
+    public abstract class Duck
+    {
+        public IFlyBehavior flyBehavior;
+        public IQuackBehavior quackBehavior;
+        public abstract void Display();
 
-    public void Fly()
-    {
-        flyBehavior.Fly();
+        public void Fly()
+        {
+            flyBehavior.Fly();
+        }
+
+        public void Quack()
+        {
+            quackBehavior.Quack();
+        }
+        public void Swim()
+        {
+            Console.WriteLine("All ducs float, even decoys!");
+        }
     }
 
-    public void Quack()
-    {
-        quackBehavior.Quack();
-    }
-    public void Swim()
-    {
-        Console.WriteLine("All ducs float, even decoys!");
-    }
 }

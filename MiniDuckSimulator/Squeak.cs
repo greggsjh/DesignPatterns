@@ -1,9 +1,12 @@
 using System;
 
-public class Squeak : IQuackBehavior
-{   
-    public void Quack()
+namespace Name
+{
+    public class Squeak : IQuackBehavior
     {
-        Console.WriteLine("Squeak");
+        public void Quack()
+        {
+            Console.WriteLine("Squeak");
+        }
     }
 }

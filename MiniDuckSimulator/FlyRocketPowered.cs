@@ -1,10 +1,13 @@
 using System;
 
-public class FlyRocketPowered : IFlyBehavior
+namespace MiniDuckSimulator
 {
-    public void Fly()
+    public class FlyRocketPowered : IFlyBehavior
     {
-        Console.WriteLine("I'm flying with a rocket!");
+        public void Fly()
+        {
+            Console.WriteLine("I'm flying with a rocket!");
+        }
     }
 }
 

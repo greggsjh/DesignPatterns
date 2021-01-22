@@ -1,9 +1,12 @@
 ﻿using System;
 
-public class PlainQuack : IQuackBehavior
-{   
-    public void Quack()
+namespace MiniDuckSimulator
+{
+    public class PlainQuack : IQuackBehavior
     {
-        Console.WriteLine("Quack!");
+        public void Quack()
+        {
+            Console.WriteLine("Quack!");
+        }
     }
 }

@@ -1,0 +1,10 @@
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/bin/Debug/netcoreapp3.1/MiniDuckSimulator.deps.json
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/bin/Debug/netcoreapp3.1/MiniDuckSimulator.runtimeconfig.json
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/bin/Debug/netcoreapp3.1/MiniDuckSimulator.runtimeconfig.dev.json
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/bin/Debug/netcoreapp3.1/MiniDuckSimulator.dll
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/bin/Debug/netcoreapp3.1/MiniDuckSimulator.pdb
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/obj/Debug/netcoreapp3.1/MiniDuckSimulator.csprojAssemblyReference.cache
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/obj/Debug/netcoreapp3.1/MiniDuckSimulator.AssemblyInfoInputs.cache
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/obj/Debug/netcoreapp3.1/MiniDuckSimulator.AssemblyInfo.cs
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/obj/Debug/netcoreapp3.1/MiniDuckSimulator.dll
+/Users/jamisongreggs/dev/DesignPatterns/MiniDuckSimulator/obj/Debug/netcoreapp3.1/MiniDuckSimulator.pdb

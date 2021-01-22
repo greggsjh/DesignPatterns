@@ -1,9 +1,12 @@
 ﻿using System;
 
-public class MuteQuack : IQuackBehavior
-{   
-    public void Quack()
+namespace MiniDuckSimulator
+{
+    public class MuteQuack : IQuackBehavior
     {
-        Console.WriteLine("<<Silence>>");
+        public void Quack()
+        {
+            Console.WriteLine("<<Silence>>");
+        }
     }
 }

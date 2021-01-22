@@ -1,15 +1,18 @@
 using System;
 
-public class Mallard : Duck
+namespace MiniDuckSimulator
 {
-    public Mallard()
+    public class Mallard : Duck
     {
-        quackBehavior = new PlainQuack();
-        flyBehavior = new FlyWithWings();
-    }
+        public Mallard()
+        {
+            quackBehavior = new PlainQuack();
+            flyBehavior = new FlyWithWings();
+        }
 
-    public override void Display()
-    {
-        Console.WriteLine("I'm a real Mallard Duck!");
+        public override void Display()
+        {
+            Console.WriteLine("I'm a real Mallard Duck!");
+        }
     }
 }

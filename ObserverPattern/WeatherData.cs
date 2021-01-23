@@ -1,11 +1,18 @@
+using System.Collections.Generic;
+
 namespace ObserverPattern
 {
     public class WeatherData : ISubject
     {
-        public string Humidity { get; set; }
-        public string Temperature { get; set; }
-        public string Pressure { get; set; }
-        public IObserver[] Observers { get; set; }
+        public double Humidity { get; set; }
+        public double Temperature { get; set; }
+        public double Pressure { get; set; }
+        public List<IObserver> Observers { get; set; }
+
+        public WeatherData()
+        {
+            Observers = new List<IObserver>();
+        }
 
         public void Notify()
         {
@@ -15,14 +22,32 @@ namespace ObserverPattern
             }
         }
 
-        public void Subscribe()
+        public void Subscribe(IObserver observer)
         {
-            throw new System.NotImplementedException();
+            if (Observers == null)
+            {
+                Observers = new List<IObserver>();
+            }
+
+            Observers.Add(observer);
         }
 
-        public void UnSubscribe()
+        public void UnSubscribe(IObserver observer)
         {
-            throw new System.NotImplementedException();
+            if (Observers != null)
+            {
+                Observers.Remove(observer);
+            }
+        }
+
+        public void MeasurementsChanged() => Notify();
+        public void SetMeasurements(double temperature, double humidity, double pressure)
+        {
+            Temperature = temperature;
+            Humidity = humidity;
+            Pressure = pressure;
+
+            MeasurementsChanged();
         }
     }
 }

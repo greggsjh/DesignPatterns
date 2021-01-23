@@ -3,6 +3,6 @@ namespace ObserverPattern
 {
     public interface IObserver
     {
-        void Update(string temperature, string humidity, string pressure);
+        void Update(double temperature, double humidity, double pressure);
     }
 }

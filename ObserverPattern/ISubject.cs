@@ -2,8 +2,8 @@ namespace ObserverPattern
 {
     public interface ISubject
     {
-        void Subscribe();
-        void UnSubscribe();
+        void Subscribe(IObserver observer);
+        void UnSubscribe(IObserver observer);
         void Notify();
     }
 }

@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace ObserverPattern
+namespace DesignPatterns.ObserverPattern
 {
     public class HeatIndexDisplay : IDisplay, IObserver
     {

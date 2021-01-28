@@ -1,7 +1,7 @@
 ﻿using System;
-using ObserverPattern.BuiltInObserver;
+using DesignPatterns.ObserverPattern.BuiltInObserver;
 
-namespace ObserverPattern
+namespace DesignPatterns.ObserverPattern
 {
     class Program
     {

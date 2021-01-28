@@ -1,4 +1,4 @@
-namespace ObserverPattern.BuiltInObserver
+namespace DesignPatterns.ObserverPattern.BuiltInObserver
 {
     public class Temperature
     {

@@ -1,4 +1,4 @@
-namespace ObserverPattern
+namespace DesignPatterns.ObserverPattern
 {
     public class ForecastDisplay : IDisplay, IObserver
     {

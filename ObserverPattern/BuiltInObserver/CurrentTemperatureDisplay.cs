@@ -1,5 +1,5 @@
 using System;
-namespace ObserverPattern.BuiltInObserver
+namespace DesignPatterns.ObserverPattern.BuiltInObserver
 {
     public class CurrentTemperatureDisplay : IObserver<Temperature>
     {

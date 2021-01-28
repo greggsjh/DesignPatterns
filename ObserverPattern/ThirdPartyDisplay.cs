@@ -1,4 +1,4 @@
-namespace ObserverPattern
+namespace DesignPatterns.ObserverPattern
 {
     public class ThirdPartyDisplay : IDisplay, IObserver
     {

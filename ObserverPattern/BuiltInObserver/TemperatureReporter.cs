@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ObserverPattern.BuiltInObserver
+namespace DesignPatterns.ObserverPattern.BuiltInObserver
 {
     public class TemperatureReporter : IObservable<Temperature>
     {

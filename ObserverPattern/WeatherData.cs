@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ObserverPattern
+namespace DesignPatterns.ObserverPattern
 {
     public class WeatherData : ISubject
     {

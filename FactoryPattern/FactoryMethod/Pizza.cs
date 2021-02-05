@@ -3,7 +3,7 @@ using System.Text;
 
 namespace DesignPatterns.FactoryPattern.FactoryMethod
 {
-    internal class Pizza
+    internal abstract class Pizza
     {
         internal string Name { get; set; }
         internal string Dough { get; set; }

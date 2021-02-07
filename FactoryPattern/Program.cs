@@ -6,7 +6,18 @@ namespace DesignPatterns.FactoryPattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            FactoryMethod.PizzaStore nyPizzaStore = new FactoryMethod.NYPizzaStore();
+            FactoryMethod.PizzaStore chicagoPizzaStore = new FactoryMethod.ChicagoPizzaStore();
+
+            string message;
+            FactoryMethod.Pizza pizza = nyPizzaStore.OrderPizza(PizzaType.Cheese, out message);
+            Console.Write(message);
+            Console.WriteLine($"Ethan ordered a {pizza.Name} \n");
+
+            string messageOne;
+            FactoryMethod.Pizza pizzaOne = chicagoPizzaStore.OrderPizza(PizzaType.Cheese, out messageOne);
+            Console.Write(messageOne);
+            Console.WriteLine($"Joel ordered a {pizzaOne.Name} \n");
         }
     }
 }

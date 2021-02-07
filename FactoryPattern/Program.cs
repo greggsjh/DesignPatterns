@@ -7,7 +7,7 @@ namespace DesignPatterns.FactoryPattern
         static void Main(string[] args)
         {
             FactoryMethod.PizzaStore nyPizzaStore = new FactoryMethod.NYPizzaStore();
-            FactoryMethod.ChicagoPizzaStore chicagoPizzaStore = new FactoryMethod.ChicagoPizzaStore();
+            FactoryMethod.PizzaStore chicagoPizzaStore = new FactoryMethod.ChicagoPizzaStore();
 
             string message;
             FactoryMethod.Pizza pizza = nyPizzaStore.OrderPizza(PizzaType.Cheese, out message);

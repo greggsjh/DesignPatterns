@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.SingletonPattern;
 
 namespace SingletonPattern
 {
@@ -6,7 +7,11 @@ namespace SingletonPattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ChocolateBoiler chocolateBoiler = ChocolateBoiler.Instance;
+
+            Console.WriteLine(chocolateBoiler.Fill());
+            Console.WriteLine(chocolateBoiler.Boil());
+            Console.WriteLine(chocolateBoiler.Drain());
         }
     }
 }

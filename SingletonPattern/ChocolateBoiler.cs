@@ -1,3 +1,5 @@
+using System;
+
 namespace DesignPatterns.SingletonPattern
 {
     public class ChocolateBoiler
@@ -5,18 +7,61 @@ namespace DesignPatterns.SingletonPattern
         private bool IsEmpty { get; set; }
         private bool IsBoiled { get; set; }
 
-        private ChocolateBoiler _instance;
-        public ChocolateBoiler Instance
+        //Eager instantiation
+        /*
+        private static readonly ChocolateBoiler _instance = new ChocolateBoiler();
+        public static ChocolateBoiler Instance { get { return _instance; } }
+        */
+
+        //Lazy instantiation - Not thread-safe NEVER USE!!!
+        /*
+            private static ChocolateBoiler _instance;
+            public static ChocolateBoiler Instance
+            {
+                get
+                {
+                    //lazy instantiation
+                    if (_instance == null) 
+                        _instance = new ChocolateBoiler();
+
+                    return _instance;
+                }
+            }
+        */
+
+        //Lazy instantiation - Thread-safe
+        /*
+        private static class SingletonCreator
+        {
+            internal static readonly ChocolateBoiler uniqueInstance = new ChocolateBoiler();
+        }
+
+        public static ChocolateBoiler LazyInstance { get { return SingletonCreator.uniqueInstance; } }
+        */
+
+        //Lazy - Double-checked locking - Thread-safe
+        private static object _sync = new object();
+        private static ChocolateBoiler _instance = null;
+        public static ChocolateBoiler Instance
         {
             get
             {
-                if (_instance == null)
-                    _instance = new ChocolateBoiler();
-
+                if (_instance == null)//1st null check
+                {
+                    lock (_sync)
+                    {
+                        if (_instance == null) //2nd null check
+                            _instance = new ChocolateBoiler();
+                    }
+                }
                 return _instance;
             }
         }
-
+        //Lazy - Built-in Singleton System.Lazy
+        /*
+        private static readonly Lazy<ChocolateBoiler> _instance = new Lazy<ChocolateBoiler>(() => new ChocolateBoiler());
+        public static ChocolateBoiler Instance { get { return _instance.Value; } }
+        */
         private ChocolateBoiler()
         {
             IsEmpty = true;
@@ -54,6 +99,5 @@ namespace DesignPatterns.SingletonPattern
             }
             return "The boiler is empty or the mixture is already boiling.";
         }
-
     }
 }

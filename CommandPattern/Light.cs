@@ -6,7 +6,7 @@ namespace DesignPatterns.CommandPattern
     {
         internal string On()
         {
-            return "Light is on.";
+            return "Light is On.";
         }
     }
 }

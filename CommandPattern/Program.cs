@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using DesignPatterns.CommandPattern;
 
 namespace CommandPattern
@@ -17,6 +18,52 @@ namespace CommandPattern
             Console.WriteLine(remote.ButtonWasPressed());
             remote.Slot = garageDoorOpenCommand;
             Console.WriteLine(remote.ButtonWasPressed());
+
+            RemoteControl remoteControl = new RemoteControl();
+            Light livingRoomLight = new Light("Living Room");
+            Light kitchenLight = new Light("Kitchen");
+            CeilingFan ceilingFan = new CeilingFan("Living Room");
+            GarageDoor garage = new GarageDoor();
+            Stereo stereo = new Stereo();
+
+            LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+            LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+            LightOnCommand kitchenLightOn = new LightOnCommand(kitchenLight);
+            LightOffCommand kitchenLightOff = new LightOffCommand(kitchenLight);
+
+            CeilingFanOnCommand ceilingFanOnCommand = new CeilingFanOnCommand(ceilingFan);
+            CeilingFanOffCommand ceilingFanOffCommand = new CeilingFanOffCommand(ceilingFan);
+
+            GarageDoorOpenCommand garageDoorOpen = new GarageDoorOpenCommand(garage);
+            GarageDoorCloseCommand garageDoorClose = new GarageDoorCloseCommand(garage);
+
+            StereoOnWithCDCommand stereoOnWithCDCommand = new StereoOnWithCDCommand(stereo);
+            StereoOffCommand stereoOffCommand = new StereoOffCommand(stereo);
+
+            remoteControl.OnCommands[0] = livingRoomLightOn;
+            remoteControl.OnCommands[1] = kitchenLightOn;
+            remoteControl.OnCommands[2] = ceilingFanOnCommand;
+            remoteControl.OnCommands[3] = stereoOnWithCDCommand;
+
+            remoteControl.OffCommands[0] = livingRoomLightOff;
+            remoteControl.OffCommands[1] = kitchenLightOff;
+            remoteControl.OffCommands[2] = ceilingFanOffCommand;
+            remoteControl.OffCommands[3] = stereoOffCommand;
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(remoteControl.ToString());
+
+            sb.AppendLine(remoteControl.OnButtonWasPushed(0));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(0));
+            sb.AppendLine(remoteControl.OnButtonWasPushed(1));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(1));
+            sb.AppendLine(remoteControl.OnButtonWasPushed(2));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(2));
+            sb.AppendLine(remoteControl.OnButtonWasPushed(3));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(3));
+
+            Console.WriteLine(sb.ToString());
         }
     }
 }

@@ -35,10 +35,9 @@ namespace DesignPatterns.CommandPattern
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (var c in OnCommands)
+            for (int i = 0; i < 7; i++)
             {
-                int index = Array.IndexOf(OnCommands, c);
-                sb.AppendLine($"[slot {index}] {c.GetType().Name}    {OffCommands[index].GetType().Name}");
+                sb.AppendLine($"[slot {i + 1}] {OnCommands[i].GetType().Name}   {OffCommands[i].GetType().Name}");
             }
 
             return sb.ToString();

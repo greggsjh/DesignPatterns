@@ -11,5 +11,10 @@ namespace DesignPatterns.CommandPattern
         {
             return CeilingFan.On();
         }
+
+        public string Undo()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

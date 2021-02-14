@@ -6,5 +6,10 @@ namespace DesignPatterns.CommandPattern
         {
             throw new System.NotImplementedException();
         }
+
+        public string Undo()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

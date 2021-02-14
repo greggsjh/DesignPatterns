@@ -19,5 +19,10 @@ namespace DesignPatterns.CommandPattern
 
             return sb.ToString();
         }
+
+        public string Undo()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -12,5 +12,10 @@ namespace DesignPatterns.CommandPattern
         {
             return Light.Off();
         }
+
+        public string Undo()
+        {
+            return Light.On();
+        }
     }
 }

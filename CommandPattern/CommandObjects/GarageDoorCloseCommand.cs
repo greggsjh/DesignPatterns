@@ -11,5 +11,10 @@ namespace DesignPatterns.CommandPattern
         {
             return GarageDoor.Down();
         }
+
+        public string Undo()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

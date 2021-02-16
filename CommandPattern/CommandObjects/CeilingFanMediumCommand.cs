@@ -1,18 +1,18 @@
 namespace DesignPatterns.CommandPattern
 {
-    public class CeilingFanOffCommand : ICommand
+    public class CeilingFanMediumCommand : ICommand
     {
-        public CeilingFanOffCommand(CeilingFan ceilingFan)
+        public CeilingFan CeilingFan { get; set; }
+        private int _prevSpeed;
+        public CeilingFanMediumCommand(CeilingFan ceilingFan)
         {
             CeilingFan = ceilingFan;
         }
-        private int _prevSpeed;
-        public CeilingFan CeilingFan { get; set; }
         public string Execute()
         {
             _prevSpeed = CeilingFan.Speed;
-            CeilingFan.Speed = CeilingFan.OFF;
-            return CeilingFan.Off();
+            CeilingFan.Medium();
+            return CeilingFan.On();
         }
 
         public string Undo()

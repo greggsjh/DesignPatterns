@@ -21,7 +21,12 @@ namespace DesignPatterns.CommandPattern
 
         public string Undo()
         {
-            throw new System.NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            foreach (var c in Commands)
+            {
+                sb.AppendLine(c.Undo());
+            }
+            return sb.ToString();
         }
     }
 }

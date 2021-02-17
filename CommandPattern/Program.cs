@@ -15,12 +15,29 @@ namespace CommandPattern
                 Console.WriteLine(ProcessRemoteControlWithUndo());
                 Console.WriteLine(ProcessRemoteControlWithUndoComplex());
                 Console.WriteLine(ProcessMacroCommand());
+                Console.WriteLine(ProcessLambdaCommand());
 
             }
             catch (NotImplementedException ex)
             {
                 Console.WriteLine($"Undo is not implemented for this command. Message {ex.Message}");
             }
+        }
+
+        private static string ProcessLambdaCommand()
+        {
+            StringBuilder sb = new StringBuilder();
+            LambdaRemoteControl remoteControl = new LambdaRemoteControl();
+
+            Light livingRoomLight = new Light("Living Room");
+            remoteControl.OnCommands[0] = () => { return livingRoomLight.On(); };
+            remoteControl.OffCommands[0] = () => { return livingRoomLight.Off(); };
+
+            sb.AppendLine(remoteControl.ToString());
+            sb.AppendLine(remoteControl.OnButtonWasPushed(0));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(0));
+
+            return sb.ToString();
         }
 
         private static string ProcessMacroCommand()

@@ -22,7 +22,11 @@ namespace DesignPatterns.CommandPattern
 
         public string Undo()
         {
-            throw new System.NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(Stereo.Off());
+
+            return sb.ToString();
         }
     }
 }

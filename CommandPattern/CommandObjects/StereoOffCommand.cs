@@ -14,7 +14,7 @@ namespace DesignPatterns.CommandPattern
 
         public string Undo()
         {
-            throw new System.NotImplementedException();
+            return Stereo.On();
         }
     }
 }

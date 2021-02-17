@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/DuckCode/MiniDuckSimulator/bin/Debug/netcoreapp2.2/MiniDuckSimulator.dll",
+            "program": "${workspaceFolder}/CommandPattern/bin/Debug/netcoreapp3.1/CommandPattern.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/DuckCode/MiniDuckSimulator",
+            "cwd": "${workspaceFolder}/CommandPattern/",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

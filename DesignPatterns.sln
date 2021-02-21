@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandPattern", "CommandPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterAndFacadePattern", "AdapterAndFacadePattern\AdapterAndFacadePattern.csproj", "{6BC9AA4B-81CF-42F7-9847-3FD0BCC35111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethodPattern", "TemplateMethodPattern\TemplateMethodPattern.csproj", "{E766F061-E301-446D-98BD-FC82EAE9B6B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,5 +116,17 @@ Global
 		{6BC9AA4B-81CF-42F7-9847-3FD0BCC35111}.Release|x64.Build.0 = Release|Any CPU
 		{6BC9AA4B-81CF-42F7-9847-3FD0BCC35111}.Release|x86.ActiveCfg = Release|Any CPU
 		{6BC9AA4B-81CF-42F7-9847-3FD0BCC35111}.Release|x86.Build.0 = Release|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Debug|x64.Build.0 = Debug|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Debug|x86.Build.0 = Debug|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|x64.ActiveCfg = Release|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|x64.Build.0 = Release|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

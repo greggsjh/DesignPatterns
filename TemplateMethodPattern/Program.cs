@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.TemplateMethodPattern;
 
 namespace TemplateMethodPattern
 {
@@ -6,7 +7,11 @@ namespace TemplateMethodPattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Tea myTea = new Tea();
+            Console.WriteLine(myTea.PrepareRecipe());
+
+            Coffee myCoffee = new Coffee();
+            Console.WriteLine(myCoffee.PrepareRecipe());
         }
     }
 }

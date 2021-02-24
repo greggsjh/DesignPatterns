@@ -12,7 +12,10 @@ namespace DesignPatterns.TemplateMethodPattern
             sb.AppendLine(BoilWater());
             sb.AppendLine(Brew());
             sb.AppendLine(PourInCup());
-            sb.AppendLine(AddCondiments());
+            if (CustomerWantsCondiments())
+            {
+                sb.AppendLine(AddCondiments());
+            }
 
             return sb.ToString();
         }
@@ -29,5 +32,9 @@ namespace DesignPatterns.TemplateMethodPattern
             return "Pouring into cup";
         }
 
+        public virtual bool CustomerWantsCondiments()
+        {
+            return true;
+        }
     }
 }

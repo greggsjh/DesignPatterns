@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterAndFacadePattern", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethodPattern", "TemplateMethodPattern\TemplateMethodPattern.csproj", "{E766F061-E301-446D-98BD-FC82EAE9B6B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IteratorAndCompositePatterns", "IteratorAndCompositePatterns\IteratorAndCompositePatterns.csproj", "{D8246A28-3644-43BC-A440-543F1110176A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,5 +130,17 @@ Global
 		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|x64.Build.0 = Release|Any CPU
 		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|x86.ActiveCfg = Release|Any CPU
 		{E766F061-E301-446D-98BD-FC82EAE9B6B0}.Release|x86.Build.0 = Release|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Debug|x64.Build.0 = Debug|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Debug|x86.Build.0 = Debug|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Release|x64.ActiveCfg = Release|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Release|x64.Build.0 = Release|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8246A28-3644-43BC-A440-543F1110176A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

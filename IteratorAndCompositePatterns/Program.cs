@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.IteratorAndCompositePatterns.IteratorPattern;
 
 namespace IteratorAndCompositePatterns
 {
@@ -6,7 +7,12 @@ namespace IteratorAndCompositePatterns
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
+            DinerMenu dinerMenu = new DinerMenu();
+
+            Waitress waitress = new Waitress(dinerMenu, pancakeHouseMenu);
+
+            Console.WriteLine(waitress.PrintMenu());
         }
     }
 }

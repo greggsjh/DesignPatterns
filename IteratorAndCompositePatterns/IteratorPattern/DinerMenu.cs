@@ -37,9 +37,9 @@ namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < menuItems.Length; i++)
+            foreach (var item in menuItems)
             {
-                yield return menuItems[i];
+                yield return item;
             }
         }
     }

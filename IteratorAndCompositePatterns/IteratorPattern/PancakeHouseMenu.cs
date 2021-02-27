@@ -1,16 +1,14 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 {
     public class PancakeHouseMenu : IEnumerable
     {
-        public List<MenuItem> MenuItems { get; set; }
+        private ArrayList MenuItems { get; set; }
 
         public PancakeHouseMenu()
         {
-            MenuItems = new List<MenuItem>();
+            MenuItems = new ArrayList();
 
             addItem("K&B's Pancake Breakfast", "Pancakes with scrambled eggs and toast", true, 2.99m);
             addItem("Regular Pancake Breakfast", "Pancakes with fried eggs, sausage", false, 2.99m);
@@ -25,9 +23,9 @@ namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < MenuItems.Count; i++)
+            foreach (var item in MenuItems)
             {
-                yield return MenuItems[i];
+                yield return item;
             }
         }
     }

@@ -11,7 +11,7 @@ namespace IteratorAndCompositePatterns
             DinerMenu dinerMenu = new DinerMenu();
             CafeMenu cafeMenu = new CafeMenu();
 
-            Waitress waitress = new Waitress(dinerMenu, pancakeHouseMenu, cafeMenu);
+            Waitress waitress = new Waitress(new IMenu[] { pancakeHouseMenu, dinerMenu, cafeMenu });
 
             Console.WriteLine(waitress.PrintMenu());
         }

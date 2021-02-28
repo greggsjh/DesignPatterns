@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 {
-    public class CafeMenu : IEnumerable
+    public class CafeMenu : IMenu
     {
         private Dictionary<string, MenuItem> menuItems;
+        public string Name { get { return "DINNER"; } }
         public CafeMenu()
         {
             menuItems = new Dictionary<string, MenuItem>();

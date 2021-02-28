@@ -3,11 +3,12 @@ using System.Collections;
 
 namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 {
-    public class DinerMenu : IEnumerable
+    public class DinerMenu : IMenu
     {
         private const int MAX_ITEMS = 6;
         private int numberOfItems = 0;
         private MenuItem[] menuItems;
+        public string Name { get { return "LUNCH"; } }
 
         public DinerMenu()
         {

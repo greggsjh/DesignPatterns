@@ -5,15 +5,11 @@ namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 {
     public class Waitress
     {
-        private IEnumerable dinerMenu;
-        private IEnumerable pancakeHouseMenu;
-        private IEnumerable cafeMenu;
+        private IMenu[] menus;
 
-        public Waitress(IEnumerable dMenu, IEnumerable pHouseMenu, IEnumerable cMenu)
+        public Waitress(IMenu[] m)
         {
-            dinerMenu = dMenu;
-            pancakeHouseMenu = pHouseMenu;
-            cafeMenu = cMenu;
+            menus = m;
         }
 
         public string PrintMenu()
@@ -22,12 +18,12 @@ namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 
             sb.AppendLine("MENU");
             sb.AppendLine("----");
-            sb.AppendLine("BREAKFAST");
-            sb.AppendLine(PrintMenu(pancakeHouseMenu));
-            sb.AppendLine("LUNCH");
-            sb.AppendLine(PrintMenu(dinerMenu));
-            sb.AppendLine("DINNER");
-            sb.AppendLine(PrintMenu(cafeMenu));
+
+            foreach (var item in menus)
+            {
+                sb.AppendLine(item.Name);
+                sb.AppendLine(PrintMenu(item));
+            }
 
             return sb.ToString();
         }

@@ -2,9 +2,10 @@ using System.Collections;
 
 namespace DesignPatterns.IteratorAndCompositePatterns.IteratorPattern
 {
-    public class PancakeHouseMenu : IEnumerable
+    public class PancakeHouseMenu : IMenu
     {
         private ArrayList MenuItems { get; set; }
+        public string Name { get { return "BREAKFAST"; } }
 
         public PancakeHouseMenu()
         {

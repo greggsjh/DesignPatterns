@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 namespace DesignPatterns.IteratorAndCompositePatterns.CompositePattern
 {
@@ -14,17 +15,17 @@ namespace DesignPatterns.IteratorAndCompositePatterns.CompositePattern
         }
         public virtual void Add(MenuComponent menuComponent)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public virtual void Remove(MenuComponent menuComponent)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public virtual MenuComponent GetChild(int index)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
     }
 }

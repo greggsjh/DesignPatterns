@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace DesignPatterns.IteratorAndCompositePatterns.CompositePattern
 {
     public class Waitress

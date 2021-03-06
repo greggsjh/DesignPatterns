@@ -6,5 +6,6 @@ namespace DesignPatterns.StatePattern
         string EjectQuarter();
         string TurnCrank();
         string Dispense();
+        string Refill(int numberOfGumballs);
     }
 }

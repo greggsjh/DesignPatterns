@@ -24,6 +24,11 @@ namespace DesignPatterns.StatePattern
             return "You inserted a quarter";
         }
 
+        public string Refill(int numberOfGumballs)
+        {
+            return "Sorry. Can't refill.";
+        }
+
         public string TurnCrank()
         {
             return "You turned, but there's no quarter";

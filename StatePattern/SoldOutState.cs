@@ -11,22 +11,29 @@ namespace DesignPatterns.StatePattern
 
         public string Dispense()
         {
-            throw new System.NotImplementedException();
+            return "No gumball dispensed";
         }
 
         public string EjectQuarter()
         {
-            throw new System.NotImplementedException();
+            return "You can't eject, you haven't insertad a quarter yet";
         }
 
         public string InsertQuarter()
         {
-            throw new System.NotImplementedException();
+            return "You can't insert a quarter, the machine is sold out";
+        }
+
+        public string Refill(int numberOfGumballs)
+        {
+            gumballMachine.Count = numberOfGumballs;
+            gumballMachine.CurrentState = gumballMachine.NoQuarterState;
+            return "Machine has been refilled";
         }
 
         public string TurnCrank()
         {
-            throw new System.NotImplementedException();
+            return "You turned, but there are no gumballs";
         }
     }
 }

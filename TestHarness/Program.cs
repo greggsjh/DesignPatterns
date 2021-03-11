@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
+using DesignPatterns.CoreObjects.AdapterPattern;
+using DesignPatterns.CoreObjects.CommandPattern;
 using DesignPatterns.CoreObjects.DecoratorPattern;
+using DesignPatterns.CoreObjects.FacadePattern;
 using DesignPatterns.CoreObjects.FactoryPattern;
 using DesignPatterns.CoreObjects.FactoryPattern.FactoryMethod;
 using DesignPatterns.CoreObjects.ObserverPattern;
@@ -30,8 +33,11 @@ namespace TestHarness
                 Console.WriteLine("Please enter 9 to test the IComparable Template.");
                 Console.WriteLine("Please enter 10 to test the Iterator Pattern.");
                 Console.WriteLine("Please enter 11 to test the Composite Pattern.");
+                Console.WriteLine("Please enter 12 to test the Adapter Pattern.");
+                Console.WriteLine("Please enter 13 to test the Facade Pattern.");
+                Console.WriteLine("Please enter 14 to test the Command Pattern.");
 
-                Console.WriteLine("Please enter exit to quit.");
+                Console.WriteLine("Please type 'exit' to quit.");
 
                 string input = Console.ReadLine().ToLower();
 
@@ -83,6 +89,15 @@ namespace TestHarness
                     case "11":
                         TestCompositePattern();
                         break;
+                    case "12":
+                        TestAdapterPattern();
+                        break;
+                    case "13":
+                        TestFacadePattern();
+                        break;
+                    case "14":
+                        TestCommandPattern();
+                        break;
                     case "exit":
                         Console.Clear();
                         retry = false;
@@ -108,6 +123,238 @@ namespace TestHarness
                 Thread.Sleep(500);
             }
             Console.Clear();
+        }
+
+        private static void TestCommandPattern()
+        {
+            try
+            {
+                Console.WriteLine(ProcessSimpleRemote());
+                Console.WriteLine(ProcessRemoteControl());
+                Console.WriteLine(ProcessRemoteControlWithUndo());
+                Console.WriteLine(ProcessRemoteControlWithUndoComplex());
+                Console.WriteLine(ProcessMacroCommand());
+                Console.WriteLine(ProcessLambdaCommand());
+
+            }
+            catch (NotImplementedException ex)
+            {
+                Console.WriteLine($"Undo is not implemented for this command. Message {ex.Message}");
+            }
+        }
+
+        private static string ProcessLambdaCommand()
+        {
+            StringBuilder sb = new StringBuilder();
+            LambdaRemoteControl remoteControl = new LambdaRemoteControl();
+
+            Light livingRoomLight = new Light("Living Room");
+            remoteControl.OnCommands[0] = () => { return livingRoomLight.On(); };
+            remoteControl.OffCommands[0] = () => { return livingRoomLight.Off(); };
+
+            sb.AppendLine(remoteControl.ToString());
+            sb.AppendLine(remoteControl.OnButtonWasPushed(0));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(0));
+
+            return sb.ToString();
+        }
+
+        private static string ProcessMacroCommand()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            RemoteControl remoteControl = new RemoteControl();
+
+            Light light = new Light("Living Room");
+            Stereo stereo = new Stereo();
+
+            LightOnCommand lightOn = new LightOnCommand(light);
+            StereoOnWithCDCommand stereoOn = new StereoOnWithCDCommand(stereo);
+
+            LightOffCommand lightOff = new LightOffCommand(light);
+            StereoOffCommand stereoOff = new StereoOffCommand(stereo);
+
+            ICommand[] partyOn = { lightOn, stereoOn };
+            ICommand[] partyOff = { lightOff, stereoOff };
+
+            MacroCommand partyOnMacro = new MacroCommand(partyOn);
+            MacroCommand partyOffMacro = new MacroCommand(partyOff);
+
+            remoteControl.OnCommands[0] = partyOnMacro;
+            remoteControl.OffCommands[0] = partyOffMacro;
+
+            sb.AppendLine(remoteControl.ToString());
+            sb.AppendLine("--- Pushing Macro On ---");
+            sb.AppendLine(remoteControl.OnButtonWasPushed(0));
+            sb.AppendLine("--- Pushing Macro Off ---");
+            sb.AppendLine(remoteControl.OffButtonWasPushed(0));
+
+            return sb.ToString();
+        }
+
+        private static string ProcessRemoteControlWithUndoComplex()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            RemoteControlWithUndo remoteControlUndo = new RemoteControlWithUndo();
+            CeilingFan ceilingFan1 = new CeilingFan("Living Room");
+
+            remoteControlUndo.OnCommands[0] = new CeilingFanMediumCommand(ceilingFan1);
+            remoteControlUndo.OffCommands[0] = new CeilingFanOffCommand(ceilingFan1);
+
+            remoteControlUndo.OnCommands[1] = new CeilingFanHighCommand(ceilingFan1);
+            remoteControlUndo.OffCommands[1] = new CeilingFanOffCommand(ceilingFan1);
+
+            sb.AppendLine(remoteControlUndo.OnButtonWasPushed(0));
+            sb.AppendLine(remoteControlUndo.OffButtonWasPushed(0));
+            sb.AppendLine(remoteControlUndo.ToString());
+            sb.AppendLine(remoteControlUndo.UndoButtonWasPushed());
+
+            sb.AppendLine(remoteControlUndo.OnButtonWasPushed(1));
+            sb.AppendLine(remoteControlUndo.ToString());
+            sb.AppendLine(remoteControlUndo.UndoButtonWasPushed());
+
+            return sb.ToString();
+        }
+
+        private static string ProcessRemoteControlWithUndo()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            RemoteControlWithUndo remoteControlWithUndo = new RemoteControlWithUndo();
+
+            Light livingRoomLight = new Light("Living Room");
+
+            LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+            LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+
+            remoteControlWithUndo.OnCommands[0] = livingRoomLightOn;
+            remoteControlWithUndo.OffCommands[0] = livingRoomLightOff;
+
+            sb.AppendLine(remoteControlWithUndo.OnButtonWasPushed(0));
+            sb.AppendLine(remoteControlWithUndo.OffButtonWasPushed(0));
+            sb.AppendLine(remoteControlWithUndo.ToString());
+            sb.AppendLine(remoteControlWithUndo.UndoButtonWasPushed());
+            sb.AppendLine(remoteControlWithUndo.OffButtonWasPushed(0));
+            sb.AppendLine(remoteControlWithUndo.OnButtonWasPushed(0));
+            sb.AppendLine(remoteControlWithUndo.ToString());
+            sb.AppendLine(remoteControlWithUndo.UndoButtonWasPushed());
+
+            return sb.ToString();
+        }
+
+        private static string ProcessRemoteControl()
+        {
+            RemoteControl remoteControl = new RemoteControl();
+
+            Light livingRoomLight = new Light("Living Room");
+            Light kitchenLight = new Light("Kitchen");
+            CeilingFan ceilingFan = new CeilingFan("Living Room");
+            GarageDoor garage = new GarageDoor();
+            Stereo stereo = new Stereo();
+
+            LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+            LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+            LightOnCommand kitchenLightOn = new LightOnCommand(kitchenLight);
+            LightOffCommand kitchenLightOff = new LightOffCommand(kitchenLight);
+
+            CeilingFanOnCommand ceilingFanOnCommand = new CeilingFanOnCommand(ceilingFan);
+            CeilingFanOffCommand ceilingFanOffCommand = new CeilingFanOffCommand(ceilingFan);
+
+            GarageDoorOpenCommand garageDoorOpen = new GarageDoorOpenCommand(garage);
+            GarageDoorCloseCommand garageDoorClose = new GarageDoorCloseCommand(garage);
+
+            StereoOnWithCDCommand stereoOnWithCDCommand = new StereoOnWithCDCommand(stereo);
+            StereoOffCommand stereoOffCommand = new StereoOffCommand(stereo);
+
+            remoteControl.OnCommands[0] = livingRoomLightOn;
+            remoteControl.OnCommands[1] = kitchenLightOn;
+            remoteControl.OnCommands[2] = ceilingFanOnCommand;
+            remoteControl.OnCommands[3] = stereoOnWithCDCommand;
+
+            remoteControl.OffCommands[0] = livingRoomLightOff;
+            remoteControl.OffCommands[1] = kitchenLightOff;
+            remoteControl.OffCommands[2] = ceilingFanOffCommand;
+            remoteControl.OffCommands[3] = stereoOffCommand;
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(remoteControl.ToString());
+
+            sb.AppendLine(remoteControl.OnButtonWasPushed(0));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(0));
+            sb.AppendLine(remoteControl.OnButtonWasPushed(1));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(1));
+            sb.AppendLine(remoteControl.OnButtonWasPushed(2));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(2));
+            sb.AppendLine(remoteControl.OnButtonWasPushed(3));
+            sb.AppendLine(remoteControl.OffButtonWasPushed(3));
+
+            return sb.ToString();
+        }
+
+        private static string ProcessSimpleRemote()
+        {
+            StringBuilder sb = new StringBuilder();
+            SimpleRemoteControl remote = new SimpleRemoteControl();
+            Light light = new Light();
+            LightOnCommand lightOn = new LightOnCommand(light);
+            GarageDoor garageDoor = new GarageDoor();
+            GarageDoorOpenCommand garageDoorOpenCommand = new GarageDoorOpenCommand(garageDoor);
+
+            remote.Slot = lightOn;
+            sb.AppendLine(remote.ButtonWasPressed());
+            remote.Slot = garageDoorOpenCommand;
+            sb.AppendLine(remote.ButtonWasPressed());
+
+            return sb.ToString();
+        }
+        private static void TestFacadePattern()
+        {
+            string brand = "Top-O-Line";
+            Amplifier a = new Amplifier(brand);
+            Tuner t = new Tuner();
+            DvdPlayer d = new DvdPlayer(brand);
+            CdPlayer c = new CdPlayer(brand);
+            Projector p = new Projector(brand);
+            Screen s = new Screen();
+            TheaterLights l = new TheaterLights();
+            PopcornPopper pp = new PopcornPopper();
+
+            HomeTheaterFacade homeTheater = new HomeTheaterFacade(a, t, d, c, p, s, l, pp);
+
+            Console.WriteLine(homeTheater.WatchMovie("Black Panther"));
+            Console.WriteLine(homeTheater.EndMovie());
+        }
+
+        private static void TestAdapterPattern()
+        {
+            MallardDuck duck = new MallardDuck();
+
+            WildTurkey turkey = new WildTurkey();
+            IDuck turkeyAdapter = new TurkeyAdapter(turkey);
+
+            Console.WriteLine("The Turkey says...");
+            Console.WriteLine(turkey.Gobble());
+            Console.WriteLine(turkey.Fly());
+
+            Console.WriteLine();
+
+            Console.WriteLine("The Duck says...");
+            Console.WriteLine(TestDuck(duck));
+
+            Console.WriteLine("The TurkeyAdapter says ...");
+            Console.WriteLine(TestDuck(turkeyAdapter));
+        }
+
+        private static string TestDuck(IDuck duck)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(duck.Quack());
+            sb.AppendLine(duck.Fly());
+
+            return sb.ToString();
         }
 
         private static void TestIteratorPattern()

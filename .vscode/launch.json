@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/TestHarness/bin/Debug/netcoreapp3.1/TestHarness.dll",
+            "program": "${workspaceFolder}/WebServices/bin/Debug/netcoreapp3.1/WebServices.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/TestHarness/",
+            "cwd": "${workspaceFolder}/WebServices/",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

@@ -4,9 +4,9 @@ namespace DesignPatterns.CoreObjects.ProxyPattern
 {
     public class GumballMonitor
     {
-        private GumballMachine _machine;
+        private IRemotableGumballMachine _machine;
 
-        public GumballMonitor(GumballMachine machine)
+        public GumballMonitor(IRemotableGumballMachine machine)
         {
             _machine = machine;
         }

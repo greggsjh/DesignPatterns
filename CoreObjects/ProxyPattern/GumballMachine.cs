@@ -2,7 +2,7 @@ using System.Text;
 
 namespace DesignPatterns.CoreObjects.ProxyPattern
 {
-    public class GumballMachine
+    public class GumballMachine : IRemotableGumballMachine
     {
         public IState CurrentState { get; internal set; }
         public IState HasQuarterState { get; internal set; }

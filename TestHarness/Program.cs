@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using DesignPatterns.CoreObjects.AdapterPattern;
 using DesignPatterns.CoreObjects.CommandPattern;
@@ -11,11 +13,13 @@ using DesignPatterns.CoreObjects.ObserverPattern;
 using DesignPatterns.CoreObjects.ObserverPattern.BuiltInObserver;
 using DesignPatterns.CoreObjects.SingletonPattern;
 using DesignPatterns.CoreObjects.TemplateMethodPattern;
+using DesignPatterns.CoreObjects.WebServices;
 
 namespace TestHarness
 {
     class Program
     {
+        //private static HttpClient _client = new HttpClient();
         static void Main(string[] args)
         {
             bool retry = true;
@@ -36,6 +40,7 @@ namespace TestHarness
                 Console.WriteLine("Please enter 12 to test the Adapter Pattern.");
                 Console.WriteLine("Please enter 13 to test the Facade Pattern.");
                 Console.WriteLine("Please enter 14 to test the Command Pattern.");
+                Console.WriteLine("Please enter 15 to test the Remote Proxy Pattern.");
 
                 Console.WriteLine("Please type 'exit' to quit.");
 
@@ -97,6 +102,9 @@ namespace TestHarness
                         break;
                     case "14":
                         TestCommandPattern();
+                        break;
+                    case "15":
+                        TestRemoteProxyPattern();
                         break;
                     case "exit":
                         Console.Clear();
@@ -568,11 +576,24 @@ namespace TestHarness
 
         private static void GumballMachineTestDrive(string name, int inventory)
         {
-
             DesignPatterns.CoreObjects.ProxyPattern.GumballMachine gumballMachine = new DesignPatterns.CoreObjects.ProxyPattern.GumballMachine(inventory, name);
             DesignPatterns.CoreObjects.ProxyPattern.GumballMonitor monitor = new DesignPatterns.CoreObjects.ProxyPattern.GumballMonitor(gumballMachine);
 
             Console.WriteLine(monitor.Report());
+        }
+
+        private static void TestRemoteProxyPattern()
+        {
+            string[] locations = new string[] { "SantaFe", "Boulder", "Seattle", "Atlanta", "Columbia" };
+            DesignPatterns.CoreObjects.ProxyPattern.GumballMonitor[] monitors = new DesignPatterns.CoreObjects.ProxyPattern.GumballMonitor[locations.Length];
+            Random randomNum = new Random();
+            for (int i = 0; i < locations.Length; i++)
+            {
+                monitors[i] = new DesignPatterns.CoreObjects.ProxyPattern.GumballMonitor(new DesignPatterns.CoreObjects.ProxyPattern.GumballMachineProxy(randomNum.Next(25), locations[i]));
+
+                Console.WriteLine(monitors[i].Report());
+                Console.WriteLine();
+            }
         }
     }
 }

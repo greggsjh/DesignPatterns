@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using DesignPatterns.CoreObjects.Helpers;
 using DesignPatterns.CoreObjects.ProxyPattern;
 using DesignPatterns.CoreObjects.WebServices;
 using Microsoft.AspNetCore.Mvc;
@@ -66,10 +65,42 @@ namespace DesignPatterns.WebServices
             return CreatedAtRoute("GetGumballMachine", new { location = gumballMachine.Location }, gumballMachineDto);
         }
 
+        [HttpPut("{location}", Name = "UpdateGumballMachine")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        public IActionResult UpdateGumballMachine(string location, [FromBody] UpdateGumballMachineDto gumballMachine)
+        {
+            var gm = _machines.Where(gm => gm.Location == location).FirstOrDefault();
+            if (gm == null)
+            {
+                return NotFound();
+            }
+
+            var defaultStates = new string[] { "NoQuarterState", "HasQuarterState", "SoldOutState", "SoldState", "WinnerState" };
+
+            if (!defaultStates.Any(ds => ds.ToLower() == gumballMachine.CurrentState.Name.ToLower()))
+            {
+                return BadRequest();
+            }
+
+            gm.Count = gumballMachine.Inventory;
+            gm.CurrentState = Helper.StateFactory(gumballMachine.CurrentState.Name, gm);
+            gm.Location = gumballMachine.Location;
+
+            var gumballMachineDto = new GumballMachineDto
+            {
+                Location = gm.Location,
+                Inventory = gm.Count,
+                CurrentState = new CurrentStateDto { Name = gm.CurrentState.GetType().Name }
+            };
+
+            return CreatedAtRoute("GetGumballMachine", new { location = gm.Location }, gumballMachineDto);
+        }
+
         [HttpOptions]
         public IActionResult GetActions()
         {
-            Response.Headers.Add("Allow", "GET, OPTIONS, HEAD, POST");
+            Response.Headers.Add("Allow", "GET, OPTIONS, HEAD, PUT, POST");
             return Ok();
         }
     }

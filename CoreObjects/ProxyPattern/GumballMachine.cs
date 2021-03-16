@@ -4,14 +4,14 @@ namespace DesignPatterns.CoreObjects.ProxyPattern
 {
     public class GumballMachine : IRemotableGumballMachine
     {
-        public IState CurrentState { get; internal set; }
+        public IState CurrentState { get; set; }
         public IState HasQuarterState { get; internal set; }
         public IState NoQuarterState { get; internal set; }
         public IState SoldOutState { get; internal set; }
         public IState SoldState { get; internal set; }
         public IState WinnerState { get; internal set; }
         public int Count { get; set; }
-        public string Location { get; internal set; }
+        public string Location { get; set; }
 
         public GumballMachine(int numberOfGumballs, string location)
         {

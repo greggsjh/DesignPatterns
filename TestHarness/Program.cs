@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading;
 using DesignPatterns.CoreObjects.AdapterPattern;
 using DesignPatterns.CoreObjects.CommandPattern;
@@ -13,7 +11,6 @@ using DesignPatterns.CoreObjects.ObserverPattern;
 using DesignPatterns.CoreObjects.ObserverPattern.BuiltInObserver;
 using DesignPatterns.CoreObjects.SingletonPattern;
 using DesignPatterns.CoreObjects.TemplateMethodPattern;
-using DesignPatterns.CoreObjects.WebServices;
 
 namespace TestHarness
 {

@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading;
 using DesignPatterns.CoreObjects.AdapterPattern;
 using DesignPatterns.CoreObjects.CommandPattern;
+using DesignPatterns.CoreObjects.CompoundPatterns;
 using DesignPatterns.CoreObjects.DecoratorPattern;
 using DesignPatterns.CoreObjects.FacadePattern;
 using DesignPatterns.CoreObjects.FactoryPattern;
@@ -38,6 +39,7 @@ namespace TestHarness
                 Console.WriteLine("Please enter 13 to test the Facade Pattern.");
                 Console.WriteLine("Please enter 14 to test the Command Pattern.");
                 Console.WriteLine("Please enter 15 to test the Remote Proxy Pattern.");
+                Console.WriteLine("Please enter 16 to test the Pattern of Patterns.");
 
                 Console.WriteLine("Please type 'exit' to quit.");
 
@@ -103,6 +105,9 @@ namespace TestHarness
                     case "15":
                         TestRemoteProxyPattern();
                         break;
+                    case "16":
+                        TestPatternOfPatterns();
+                        break;
                     case "exit":
                         Console.Clear();
                         retry = false;
@@ -128,6 +133,34 @@ namespace TestHarness
                 Thread.Sleep(500);
             }
             Console.Clear();
+        }
+
+        private static void TestPatternOfPatterns()
+        {
+            IAbstractDuckFactory duckFactory = new CountingDuckFactory();
+            IAbstractDuckFactory nonCountingDuckFactory = new AbstractDuckFactory();
+
+            IQuackable mallardDuck = duckFactory.CreateWildMallard();
+            IQuackable redheadDuck = duckFactory.CreateRedheadDuck();
+            IQuackable duckCall = duckFactory.CreateDuckCall();
+            IQuackable rubberDuck = duckFactory.CreateRubberDuck();
+            IQuackable gooseAdapter = nonCountingDuckFactory.CreateGooseAdapter();
+
+            Console.WriteLine("\nDuck Simulator");
+            Console.WriteLine();
+
+            SimulateDuck(mallardDuck);
+            SimulateDuck(redheadDuck);
+            SimulateDuck(duckCall);
+            SimulateDuck(rubberDuck);
+            SimulateDuck(gooseAdapter);
+
+            Console.WriteLine($"The ducks quacked {QuackCounter.NumberOfQuacks} times\n");
+        }
+
+        private static void SimulateDuck(IQuackable rubberDuck)
+        {
+            Console.WriteLine(rubberDuck.Quack());
         }
 
         private static void TestCommandPattern()

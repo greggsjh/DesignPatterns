@@ -146,16 +146,39 @@ namespace TestHarness
             IQuackable rubberDuck = duckFactory.CreateRubberDuck();
             IQuackable gooseAdapter = nonCountingDuckFactory.CreateGooseAdapter();
 
-            Console.WriteLine("\nDuck Simulator");
-            Console.WriteLine();
+            Console.WriteLine("\nDuck Simulator: With Composite - Flocks");
 
-            SimulateDuck(mallardDuck);
-            SimulateDuck(redheadDuck);
-            SimulateDuck(duckCall);
-            SimulateDuck(rubberDuck);
-            SimulateDuck(gooseAdapter);
+            Flock flockOfDucks = new Flock();
+            flockOfDucks.Quackers.Add(redheadDuck);
+            flockOfDucks.Quackers.Add(duckCall);
+            flockOfDucks.Quackers.Add(rubberDuck);
+            flockOfDucks.Quackers.Add(gooseAdapter);
 
-            Console.WriteLine($"The ducks quacked {QuackCounter.NumberOfQuacks} times\n");
+            Flock flockOfMallards = new Flock();
+            IQuackable mallardOne = duckFactory.CreateWildMallard();
+            IQuackable mallardTwo = duckFactory.CreateWildMallard();
+            IQuackable mallardThree = duckFactory.CreateWildMallard();
+            IQuackable mallardFour = duckFactory.CreateWildMallard();
+
+            flockOfMallards.Quackers.Add(mallardOne);
+            flockOfMallards.Quackers.Add(mallardTwo);
+            flockOfMallards.Quackers.Add(mallardThree);
+            flockOfMallards.Quackers.Add(mallardFour);
+
+            flockOfDucks.Quackers.Add(flockOfMallards);
+
+            Console.WriteLine("\nDuck Simulator: With Observer");
+
+            Quackologist quackologist = new Quackologist(flockOfDucks);
+            flockOfDucks.Subscribe(quackologist);
+
+            Console.WriteLine("Duck Simulator: Whole Flock Simulation");
+            SimulateDuck(flockOfDucks);
+
+            Console.WriteLine("Duck Simulator: Mallard Flock Simulation");
+            SimulateDuck(flockOfMallards);
+
+            Console.WriteLine($"The ducks quacked {QuackCounter.NumberOfQuacks} times");
         }
 
         private static void SimulateDuck(IQuackable rubberDuck)
